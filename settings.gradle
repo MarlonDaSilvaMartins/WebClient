@@ -1,0 +1,6 @@
+rootProject.name = 'Shazam'
+include 'impl'
+include 'contract'
+include 'common'
+include 'integration'
+
