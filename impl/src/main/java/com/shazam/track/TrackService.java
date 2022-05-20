@@ -21,6 +21,7 @@ public class TrackService {
     public Mono<TrackServiceResponse> findTrackIntegration(String trackId){
         return trackIntegration.findTrack(trackId)
                 .map(TrackIntegrationResponseMapper::toTrackEntity)
+                .flatMap(trackRepository::save)
                 .map(TrackEntityMapper::toTrackServiceResponse);
     }
 }

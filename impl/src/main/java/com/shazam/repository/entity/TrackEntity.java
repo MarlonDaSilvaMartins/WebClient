@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @Builder
 @Data
-@Document(collation = "track")
+@Document(collection = "Track")
 public class TrackEntity {
     @Id
     private String id;

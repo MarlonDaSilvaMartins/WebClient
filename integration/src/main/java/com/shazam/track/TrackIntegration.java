@@ -18,7 +18,8 @@ public class TrackIntegration {
     public Mono<TrackIntegrationResponse> findTrack(String trackId) {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/tracks/details?track_id=".concat(trackId))
+                        .path("/tracks/details")
+                        .queryParam("track_id", trackId)
                         .build())
                 .retrieve()
                 .onStatus(HttpStatus::is4xxClientError, (ClientResponse response) -> response
