@@ -12,8 +12,7 @@ public class TrackServiceFacade {
 
     public Mono<TrackServiceResponse> findTrack(String trackId){
         return trackService.findById(trackId)
-                .filter(trackServiceResponse -> trackServiceResponse.getId().isEmpty())
-                .then(trackService.findTrackIntegration(trackId));
+                .switchIfEmpty(Mono.defer(() -> trackService.findTrackIntegration(trackId)));
     }
 
     public Mono<Void> deleteTrack(String trackId){
