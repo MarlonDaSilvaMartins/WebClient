@@ -24,4 +24,8 @@ public class TrackService {
                 .flatMap(trackRepository::save)
                 .map(TrackEntityMapper::toTrackServiceResponse);
     }
+
+    public Mono<Void> deleteTrack(String trackId){
+        return trackRepository.deleteById(trackId);
+    }
 }

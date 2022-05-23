@@ -16,4 +16,8 @@ public class TrackControllerFacade {
         return trackServiceFacade.findTrack(trackId)
                 .map(TrackServiceResponseMapper::toTrackServiceResponse);
     }
+
+    public Mono<Void> deleteTrack(String trackId){
+        return trackServiceFacade.deleteTrack(trackId);
+    }
 }

@@ -15,4 +15,8 @@ public class TrackServiceFacade {
                 .filter(trackServiceResponse -> trackServiceResponse.getId().isEmpty())
                 .then(trackService.findTrackIntegration(trackId));
     }
+
+    public Mono<Void> deleteTrack(String trackId){
+        return trackService.deleteTrack(trackId);
+    }
 }
