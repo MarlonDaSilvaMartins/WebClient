@@ -17,35 +17,18 @@ import reactor.core.publisher.Mono;
 
 import static com.shazam.controller.v1.track.controllerStub.TrackControllerStub.trackControllerExpectedStub;
 import static com.shazam.controller.v1.track.controllerStub.TrackControllerStub.trackControllerStub;
+import static org.mockito.Mockito.when;
 
 
 @WebFluxTest
-@ContextConfiguration(classes = {TrackController.class, TrackControllerFacade.class, TrackServiceFacade.class})
+@ContextConfiguration(classes = {TrackController.class, TrackControllerFacade.class})
 class TrackControllerTest {
 
     @Autowired
     WebTestClient webTestClient;
 
     @MockBean
-    TrackService trackService;
-
-    TrackServiceResponse trackServiceStub = TrackServiceResponse.
-            builder()
-            .id("54428397")
-            .url("https://www.shazam.com/track/54428397/without-me")
-            .subtitle("Eminem")
-            .type("MUSIC")
-            .title("Without Me")
-            .build();
-
-    TrackControllerResponse trackControllerStub = TrackControllerResponse.
-            builder()
-            .id("54428397")
-            .url("https://www.shazam.com/track/54428397/without-me")
-            .subtitle("Eminem")
-            .type("MUSIC")
-            .title("Without Me")
-            .build();
+    TrackControllerFacade trackControllerFacade;
 
     @Test
     void  whenFindTrackReturnTrackController(){
@@ -53,8 +36,8 @@ class TrackControllerTest {
         var expect = trackControllerExpectedStub();
         var controllerResponse = trackControllerStub();
 
-        Mockito.when(trackService.findById(trackId))
-                .thenReturn(Mono.just(trackServiceStub));
+        when(trackControllerFacade.findTrack(trackId))
+                .thenReturn(Mono.just(controllerResponse));
 
         webTestClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/v1/track/")
@@ -65,5 +48,21 @@ class TrackControllerTest {
                 .is2xxSuccessful()
                 .expectBody(TrackControllerResponse.class)
                 .isEqualTo(expect);
+    }
+
+    @Test
+    void  whenDeleteTrackReturnNothing(){
+        String trackId = "54428397";
+
+        when(trackControllerFacade.deleteTrack(trackId))
+                .thenReturn(Mono.empty());
+
+        webTestClient.delete()
+                .uri(uriBuilder -> uriBuilder.path("/v1/track/")
+                        .path(trackId)
+                        .build())
+                .exchange()
+                .expectStatus()
+                .is2xxSuccessful();
     }
 }
