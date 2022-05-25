@@ -9,7 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import static com.shazam.track.serviceStub.TrackServiceFacadeStub.*;
+import static com.shazam.track.serviceStub.TrackServiceFacadeStub.trackServiceExpectedStub;
+import static com.shazam.track.serviceStub.TrackServiceFacadeStub.trackServiceStub;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -23,7 +24,7 @@ class TrackServiceFacadeTest {
     TrackService trackService;
 
     @Test
-    void whenFindTrackByIdReturnTrackserviceResponse() {
+    void whenFindTrackByIdReturnTrackServiceResponse() {
         var expected = trackServiceExpectedStub();
         var serviceResponseStub = trackServiceStub();
 
@@ -38,7 +39,7 @@ class TrackServiceFacadeTest {
     }
 
     @Test
-    void whenFindTrackIntegrationReturnTrackserviceResponse() {
+    void whenFindTrackIntegrationReturnTrackServiceResponse() {
         var expected = trackServiceExpectedStub();
         var serviceResponseStub = trackServiceStub();
 
