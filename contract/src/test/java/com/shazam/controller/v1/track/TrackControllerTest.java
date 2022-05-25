@@ -1,18 +1,13 @@
 package com.shazam.controller.v1.track;
 
 import com.shazam.controller.v1.track.model.response.TrackControllerResponse;
-import com.shazam.track.TrackService;
-import com.shazam.track.TrackServiceFacade;
-import com.shazam.track.model.response.TrackServiceResponse;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.util.UriBuilder;
 import reactor.core.publisher.Mono;
 
 import static com.shazam.controller.v1.track.controllerStub.TrackControllerStub.trackControllerExpectedStub;
@@ -40,7 +35,7 @@ class TrackControllerTest {
                 .thenReturn(Mono.just(controllerResponse));
 
         webTestClient.get()
-                .uri(uriBuilder -> uriBuilder.path("/v1/track/")
+                .uri((UriBuilder uriBuilder) -> uriBuilder.path("/v1/track/")
                         .path(trackId)
                         .build())
                 .exchange()
@@ -58,7 +53,7 @@ class TrackControllerTest {
                 .thenReturn(Mono.empty());
 
         webTestClient.delete()
-                .uri(uriBuilder -> uriBuilder.path("/v1/track/")
+                .uri((UriBuilder uriBuilder) -> uriBuilder.path("/v1/track/")
                         .path(trackId)
                         .build())
                 .exchange()

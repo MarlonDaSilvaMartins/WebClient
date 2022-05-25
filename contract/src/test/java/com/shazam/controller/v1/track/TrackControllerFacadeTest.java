@@ -1,5 +1,6 @@
 package com.shazam.controller.v1.track;
 
+import com.shazam.controller.v1.track.model.response.TrackControllerResponse;
 import com.shazam.track.TrackServiceFacade;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +33,7 @@ class TrackControllerFacadeTest {
         when(trackServiceFacade.findTrack("54428397"))
                 .thenReturn(Mono.just(serviceResponseStub));
         StepVerifier.create(trackControllerFacade.findTrack("54428397"))
-                .assertNext(response -> assertEquals(expected, response))
+                .assertNext((TrackControllerResponse response) -> assertEquals(expected, response))
                 .verifyComplete();
 
         var actual = trackControllerFacade.findTrack("54428397").block();

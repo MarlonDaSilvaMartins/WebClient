@@ -1,5 +1,6 @@
 package com.shazam.track;
 
+import com.shazam.track.model.response.TrackServiceResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,7 +32,7 @@ class TrackServiceFacadeTest {
         when(trackService.findById("54428397"))
                 .thenReturn(Mono.just(serviceResponseStub));
         StepVerifier.create(trackServiceFacade.findTrack("54428397"))
-                .assertNext(response -> assertEquals(expected, response))
+                .assertNext((TrackServiceResponse response) -> assertEquals(expected, response))
                 .verifyComplete();
 
         var actual = trackServiceFacade.findTrack("54428397").block();
@@ -48,7 +49,7 @@ class TrackServiceFacadeTest {
         when(trackService.findTrackIntegration("54428397"))
                 .thenReturn(Mono.just(serviceResponseStub));
         StepVerifier.create(trackServiceFacade.findTrack("54428397"))
-                .assertNext(response -> assertEquals(expected, response))
+                .assertNext((TrackServiceResponse response) -> assertEquals(expected, response))
                 .verifyComplete();
 
         var actual = trackServiceFacade.findTrack("54428397").block();
