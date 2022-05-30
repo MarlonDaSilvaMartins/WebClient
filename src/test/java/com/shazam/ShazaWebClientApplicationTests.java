@@ -8,6 +8,6 @@ class ShazaWebClientApplicationTests {
 
     @Test
     void contextLoads() {
-    }
 
+    }
 }
