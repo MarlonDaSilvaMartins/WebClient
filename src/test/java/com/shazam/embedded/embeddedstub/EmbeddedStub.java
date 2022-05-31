@@ -1,6 +1,7 @@
 package com.shazam.embedded.embeddedstub;
 
 import com.shazam.repository.entity.TrackEntity;
+import com.shazam.track.model.response.TrackServiceResponse;
 
 public class EmbeddedStub {
     public static TrackEntity trackEntityStub(){

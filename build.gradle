@@ -52,7 +52,7 @@ allprojects {
         implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
         implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
         testImplementation 'org.mock-server:mockserver-netty:5.13.2'
-        testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.4.3'
+        testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.4.5'
 
     }
 
