@@ -1,0 +1,15 @@
+- Sprint 05
+    [ ]Spring Cloud Config
+
+    [ ]S.O.L.I.D
+
+    - Design Patterns
+        [ ]Builder
+
+        [ ]Facade
+
+        [ ]Decorator
+
+        [ ]Strategy
+
+        [ ]Observer
