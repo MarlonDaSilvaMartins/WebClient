@@ -1,0 +1,37 @@
+*Spring Cloud Config
+
+
+*S.O.L.I.D
+SRP(Single responsibility principle) - Uma classe deve ter um, e somente um, motivo para mudar.
+
+OCP(Open/closed principle) - Você deve ser capaz de estender um comportamento de uma classe sem a necessidade de
+modificá-lo.
+
+LSP(Liskov substitution principle) - As classes derivadas devem ser substituíveis por suas classes bases.
+
+ISP(Interface segregation principle) - Muitas interfaces específicas são melhores do que uma interface única geral.
+
+DIP(Dependency inversion principle) - Dependa de abstrações e não de implementações.
+
+
+*Design Patterns
+Builder
+
+Facade
+
+Decorator
+
+Strategy
+
+Observer
+
+
+Spring cloud
+https://emmanuelneri.com.br/2018/07/09/configuracoes-distribuidas-com-spring-cloud-config/
+https://medium.com/dev-cave/spring-cloud-config-48e423446ed8
+
+SOLID
+https://medium.com/thiago-aragao/solid-princ%C3%ADpios-da-programa%C3%A7%C3%A3o-orientada-a-objetos-ba7e31d8fb25
+https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530
+
+Design patterns
