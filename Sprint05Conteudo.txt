@@ -17,7 +17,8 @@ DIP(Dependency inversion principle) - Dependa de abstrações e não de implemen
 *Design Patterns
 Builder - O Builder é um padrão de projeto criacional, que permite a construção de objetos complexos passo a passo.
 
-Facade -
+Facade - O Facade é um padrão de projeto estrutural que que serve para esconder complexidades do sistema  e gerenciar o
+ciclo de vida do sistema
 
 Decorator -
 
