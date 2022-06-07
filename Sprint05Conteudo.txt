@@ -22,7 +22,8 @@ Facade - padrão de projeto estrutural, que que serve para esconder complexidade
 
 Decorator - padrão de projeto estrutural, que permite novos compartamentos ao objeto sem modificar seu codigo.
 
-Strategy -
+Strategy - padrão de projeto comportamental, usado para fornecer aos usuários uma maneira de alterar o comportamento de
+ uma classe sem estendê-la.
 
 Observer -
 
@@ -46,3 +47,4 @@ https://refactoring.guru/pt-br/design-patterns/facade/java/example
 https://www.geeksforgeeks.org/decorator-design-pattern-in-java-with-example/
 https://www.baeldung.com/java-decorator-pattern
 https://refactoring.guru/pt-br/design-patterns/decorator/java/example
+https://medium.com/collabcode/strategy-padr%C3%B5es-de-projeto-em-java-43889a3afc5a
