@@ -15,15 +15,15 @@ DIP(Dependency inversion principle) - Dependa de abstrações e não de implemen
 
 
 *Design Patterns
-Builder
+Builder - O Builder é um padrão de projeto criacional, que permite a construção de objetos complexos passo a passo.
 
-Facade
+Facade -
 
-Decorator
+Decorator -
 
-Strategy
+Strategy -
 
-Observer
+Observer -
 
 
 Spring cloud

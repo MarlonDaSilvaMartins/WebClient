@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TrackEntityMapper {
     public static TrackServiceResponse toTrackServiceResponse(TrackEntity trackEntity) {
-        return TrackServiceResponse.builder()
+        return new TrackServiceResponse.builder()
                 .id(trackEntity.getId())
                 .url(trackEntity.getUrl())
                 .subtitle(trackEntity.getSubtitle())
