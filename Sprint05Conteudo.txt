@@ -25,7 +25,8 @@ Decorator - padrão de projeto estrutural, que permite novos compartamentos ao o
 Strategy - padrão de projeto comportamental, usado para fornecer aos usuários uma maneira de alterar o comportamento de
  uma classe sem estendê-la.
 
-Observer -
+Observer - padrão de projeto comportamental que permite que um objeto notifique outros objetos sobre alterações em seu
+estado.
 
 
 Spring cloud
