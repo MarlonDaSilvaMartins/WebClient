@@ -15,12 +15,12 @@ DIP(Dependency inversion principle) - Dependa de abstrações e não de implemen
 
 
 *Design Patterns
-Builder - O Builder é um padrão de projeto criacional, que permite a construção de objetos complexos passo a passo.
+Builder - padrão de projeto criacional, que permite a construção de objetos complexos passo a passo.
 
-Facade - O Facade é um padrão de projeto estrutural que que serve para esconder complexidades do sistema  e gerenciar o
-ciclo de vida do sistema
+Facade - padrão de projeto estrutural, que que serve para esconder complexidades do sistema  e gerenciar o ciclo de vida
+ do sistema
 
-Decorator -
+Decorator - padrão de projeto estrutural, que permite novos compartamentos ao objeto sem modificar seu codigo.
 
 Strategy -
 
@@ -36,3 +36,13 @@ https://medium.com/thiago-aragao/solid-princ%C3%ADpios-da-programa%C3%A7%C3%A3o-
 https://medium.com/desenvolvendo-com-paixao/o-que-%C3%A9-solid-o-guia-completo-para-voc%C3%AA-entender-os-5-princ%C3%ADpios-da-poo-2b937b3fc530
 
 Design patterns
+https://www.tutorialspoint.com/design_pattern/builder_pattern.htm
+https://www.journaldev.com/1425/builder-design-pattern-in-java
+https://howtodoinjava.com/design-patterns/creational/builder-pattern-in-java/
+https://refactoring.guru/pt-br/design-patterns/builder/java/example
+https://www.tutorialspoint.com/design_pattern/facade_pattern.htm
+https://www.baeldung.com/java-facade-pattern
+https://refactoring.guru/pt-br/design-patterns/facade/java/example
+https://www.geeksforgeeks.org/decorator-design-pattern-in-java-with-example/
+https://www.baeldung.com/java-decorator-pattern
+https://refactoring.guru/pt-br/design-patterns/decorator/java/example
