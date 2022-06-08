@@ -10,6 +10,6 @@
 
         [ ]Decorator
 
-        [ ]Strategy
+        [x]Strategy
 
         [?]Observer
