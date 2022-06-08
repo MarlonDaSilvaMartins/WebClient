@@ -4,12 +4,12 @@
     [?]S.O.L.I.D
 
     - Design Patterns
-        [ ]Builder
+        [x]Builder
 
-        [ ]Facade
+        [x]Facade
 
         [ ]Decorator
 
         [ ]Strategy
 
-        [ ]Observer
+        [?]Observer
