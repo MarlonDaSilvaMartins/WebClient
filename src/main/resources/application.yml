@@ -1,0 +1,14 @@
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: Track
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: application
+  config:
+    import: "optional:configserver:http://localhost:8888/config-server/"
