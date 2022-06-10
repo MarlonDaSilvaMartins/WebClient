@@ -1,5 +1,5 @@
 - Sprint 05
-    [?]Spring Cloud Config
+    [x]Spring Cloud Config
 
     [?]S.O.L.I.D
 
