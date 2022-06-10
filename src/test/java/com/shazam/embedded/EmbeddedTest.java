@@ -8,8 +8,6 @@ import com.shazam.repository.entity.TrackEntity;
 import com.shazam.track.TrackIntegration;
 import com.shazam.track.TrackService;
 import com.shazam.track.TrackServiceFacade;
-import com.shazam.track.model.response.TrackServiceResponse;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
@@ -39,19 +37,10 @@ class EmbeddedTest {
     WebTestClient webTestClient;
 
     @Autowired
-    TrackService trackService;
-
-    @Autowired
     TrackRepository trackRepository;
 
     @MockBean
     TrackIntegration trackIntegration;
-
-//    @BeforeEach
-//    void setUp(){
-//        var entity = trackEntityStub();
-//        trackRepository.save(entity).block();
-//    }
 
     @Test
     void  whenSaveTrackReturnTrackEntity(){
@@ -96,7 +85,7 @@ class EmbeddedTest {
                 .expectStatus()
                 .is2xxSuccessful();
 
-        var actual = trackService.findById(trackId).block();
+        var actual = trackRepository.findById(trackId).block();
         assertNull(actual);
     }
 }
