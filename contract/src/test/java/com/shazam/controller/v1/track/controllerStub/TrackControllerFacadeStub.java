@@ -15,7 +15,7 @@ public class TrackControllerFacadeStub {
     }
 
     public static TrackServiceResponse trackServiceStub(){
-        return TrackServiceResponse.builder()
+        return new TrackServiceResponse.Builder()
                 .id("54428397")
                 .url("https://www.shazam.com/track/54428397/without-me")
                 .subtitle("Eminem")
