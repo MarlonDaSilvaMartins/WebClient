@@ -34,9 +34,6 @@ class ShazaWebClientApplicationTests {
     WebTestClient webTestClient;
 
     @Autowired
-    TrackService trackService;
-
-    @MockBean
     TrackRepository trackRepository;
 
     @MockBean
@@ -48,8 +45,7 @@ class ShazaWebClientApplicationTests {
         var expect = trackControllerExpectedStub();
         var entity = trackEntityStub();
 
-        when(trackRepository.findById(trackId))
-                .thenReturn(Mono.just(entity));
+        trackRepository.save(entity).block();
 
         webTestClient.get()
                 .uri((UriBuilder uriBuilder) -> uriBuilder.path("/v1/track/")
@@ -68,8 +64,6 @@ class ShazaWebClientApplicationTests {
         var expect = trackControllerExpectedStub();
         var integrationResponse = trackIntegrationResponseStub();
 
-        when(trackRepository.findById(trackId))
-                .thenReturn(Mono.empty());
         when(trackIntegration.findTrack(trackId))
                 .thenReturn(Mono.just(integrationResponse));
 
