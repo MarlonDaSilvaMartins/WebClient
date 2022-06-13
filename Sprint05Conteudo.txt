@@ -4,7 +4,7 @@
 *S.O.L.I.D
 SRP(Single responsibility principle) - Uma classe deve ter um, e somente um, motivo para mudar.
 
-OCP(Open/closed principle) - Você deve ser capaz de estender um comportamento de uma classe sem a necessidade de
+OCP(Open/closed principle) - Deve ser capaz de estender um comportamento de uma classe sem a necessidade de
 modificá-lo.
 
 LSP(Liskov substitution principle) - As classes derivadas devem ser substituíveis por suas classes bases.
