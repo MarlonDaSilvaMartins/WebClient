@@ -12,4 +12,4 @@
 
         [x]Strategy
 
-        [?]Observer
+        [x]Observer
