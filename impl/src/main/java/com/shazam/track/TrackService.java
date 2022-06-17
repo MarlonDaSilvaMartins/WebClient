@@ -14,15 +14,18 @@ public class TrackService {
     private final TrackIntegration trackIntegration;
     private final TrackRepository trackRepository;
 
+    private TrackEntityMapper trackEntityMapper;
+    private TrackIntegrationResponseMapper trackIntegrationResponseMapper;
+
     public Mono<TrackServiceResponse> findById(String trackId){
-        return trackRepository.findById(trackId).map(TrackEntityMapper::toTrackServiceResponse);
+        return trackRepository.findById(trackId).map(trackEntityMapper::toTrackServiceResponse);
     }
 
     public Mono<TrackServiceResponse> findTrackIntegration(String trackId){
         return trackIntegration.findTrack(trackId)
-                .map(TrackIntegrationResponseMapper::toTrackEntity)
+                .map(trackIntegrationResponseMapper::toTrackEntity)
                 .flatMap(trackRepository::save)
-                .map(TrackEntityMapper::toTrackServiceResponse);
+                .map(trackEntityMapper::toTrackServiceResponse);
     }
 
     public Mono<Void> deleteTrack(String trackId){

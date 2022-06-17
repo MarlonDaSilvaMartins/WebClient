@@ -2,18 +2,9 @@ package com.shazam.track.mapper.response;
 
 import com.shazam.repository.entity.TrackEntity;
 import com.shazam.track.model.response.TrackServiceResponse;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import org.mapstruct.Mapper;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TrackEntityMapper {
-    public static TrackServiceResponse toTrackServiceResponse(TrackEntity trackEntity) {
-        return new TrackServiceResponse.Builder()
-                .id(trackEntity.getId())
-                .url(trackEntity.getUrl())
-                .subtitle(trackEntity.getSubtitle())
-                .type(trackEntity.getType())
-                .title(trackEntity.getTitle())
-                .build();
-    }
+@Mapper(componentModel = "spring")
+public interface TrackEntityMapper {
+    TrackServiceResponse toTrackServiceResponse(TrackEntity trackEntity);
 }

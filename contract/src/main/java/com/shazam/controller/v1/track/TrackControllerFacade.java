@@ -12,9 +12,11 @@ import reactor.core.publisher.Mono;
 public class TrackControllerFacade {
     private final TrackServiceFacade trackServiceFacade;
 
+    private final TrackServiceResponseMapper trackServiceResponseMapper;
+
     public Mono<TrackControllerResponse> findTrack(String trackId){
         return trackServiceFacade.findTrack(trackId)
-                .map(TrackServiceResponseMapper::toTrackServiceResponse);
+                .map(trackServiceResponseMapper::toTrackServiceResponse);
     }
 
     public Mono<Void> deleteTrack(String trackId){
