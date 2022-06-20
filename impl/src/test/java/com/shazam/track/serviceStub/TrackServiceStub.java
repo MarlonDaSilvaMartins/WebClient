@@ -8,7 +8,7 @@ public class TrackServiceStub {
     public static TrackServiceResponse trackServiceExpectedStub(){
         return new TrackServiceResponse.Builder()
                 .id("54428397")
-                .url("https://www.shazam.com/track/54428397/without-me")
+                .link("https://www.shazam.com/track/54428397/without-me")
                 .subtitle("Eminem")
                 .type("MUSIC")
                 .title("Without Me")

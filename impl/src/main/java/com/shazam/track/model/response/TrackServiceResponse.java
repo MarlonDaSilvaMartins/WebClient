@@ -11,14 +11,14 @@ public class TrackServiceResponse {
     private String id;
     private String type;
     private String title;
-    private String url;
+    private String link;
     private String subtitle;
 
     private TrackServiceResponse(Builder builder){
         this.id = builder.id;
         this.type = builder.type;
         this.title = builder.title;
-        this.url = builder.url;
+        this.link = builder.link;
         this.subtitle = builder.subtitle;
     }
 
@@ -26,7 +26,7 @@ public class TrackServiceResponse {
         private String id;
         private String type;
         private String title;
-        private String url;
+        private String link;
         private String subtitle;
 
         public Builder(){
@@ -47,8 +47,8 @@ public class TrackServiceResponse {
             return this;
         }
 
-        public Builder url(String url){
-            this.url = url;
+        public Builder link(String link){
+            this.link = link;
             return this;
         }
 

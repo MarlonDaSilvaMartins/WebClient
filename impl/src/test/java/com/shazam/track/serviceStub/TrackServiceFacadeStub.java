@@ -6,7 +6,7 @@ public class TrackServiceFacadeStub {
     public static TrackServiceResponse trackServiceExpectedStub(){
         return new TrackServiceResponse.Builder()
                 .id("54428397")
-                .url("https://www.shazam.com/track/54428397/without-me")
+                .link("https://www.shazam.com/track/54428397/without-me")
                 .subtitle("Eminem")
                 .type("MUSIC")
                 .title("Without Me")
@@ -16,7 +16,7 @@ public class TrackServiceFacadeStub {
     public static TrackServiceResponse trackServiceStub(){
         return new TrackServiceResponse.Builder()
                 .id("54428397")
-                .url("https://www.shazam.com/track/54428397/without-me")
+                .link("https://www.shazam.com/track/54428397/without-me")
                 .subtitle("Eminem")
                 .type("MUSIC")
                 .title("Without Me")
