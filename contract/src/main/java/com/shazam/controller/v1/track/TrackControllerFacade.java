@@ -20,4 +20,8 @@ public class TrackControllerFacade {
     public Mono<Void> deleteTrack(String trackId){
         return trackServiceFacade.deleteTrack(trackId);
     }
+
+    public void sendMessage(String msg){
+        trackServiceFacade.sendMessage(msg);
+    }
 }

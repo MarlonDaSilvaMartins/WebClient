@@ -27,4 +27,11 @@ public class TrackController {
     public Mono<Void> deleteTrack(@PathVariable String trackId){
         return trackControllerFacade.deleteTrack(trackId);
     }
+
+    @ApiOperation(value = "test kafka")
+    @PostMapping("/kafka")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void sendMessage(@RequestParam("message") String msg){
+        trackControllerFacade.sendMessage(msg);
+    }
 }

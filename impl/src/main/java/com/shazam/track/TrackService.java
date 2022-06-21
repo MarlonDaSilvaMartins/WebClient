@@ -1,10 +1,13 @@
 package com.shazam.track;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shazam.repository.TrackRepository;
 import com.shazam.track.mapper.response.TrackEntityMapper;
 import com.shazam.track.mapper.response.TrackIntegrationResponseMapper;
 import com.shazam.track.model.response.TrackServiceResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -13,6 +16,7 @@ import reactor.core.publisher.Mono;
 public class TrackService {
     private final TrackIntegration trackIntegration;
     private final TrackRepository trackRepository;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     public Mono<TrackServiceResponse> findById(String trackId){
         return trackRepository.findById(trackId)
@@ -28,5 +32,10 @@ public class TrackService {
 
     public Mono<Void> deleteTrack(String trackId){
         return trackRepository.deleteById(trackId);
+    }
+
+    public void sendMessage(String msg){
+        String topicName = "teste";
+        kafkaTemplate.send(topicName, msg);
     }
 }

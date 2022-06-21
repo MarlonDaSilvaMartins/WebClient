@@ -18,4 +18,8 @@ public class TrackServiceFacade {
     public Mono<Void> deleteTrack(String trackId){
         return trackService.deleteTrack(trackId);
     }
+
+    public void sendMessage(String msg){
+        trackService.sendMessage(msg);
+    }
 }
