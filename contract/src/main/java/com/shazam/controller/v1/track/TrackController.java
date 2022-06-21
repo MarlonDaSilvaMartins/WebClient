@@ -31,7 +31,7 @@ public class TrackController {
     @ApiOperation(value = "test kafka")
     @PostMapping("/kafka")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void sendMessage(@RequestParam("message") String msg){
-        trackControllerFacade.sendMessage(msg);
+    public void sendMessage(){
+        trackControllerFacade.sendMessage();
     }
 }

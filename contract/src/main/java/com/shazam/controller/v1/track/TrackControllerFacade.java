@@ -21,7 +21,7 @@ public class TrackControllerFacade {
         return trackServiceFacade.deleteTrack(trackId);
     }
 
-    public void sendMessage(String msg){
-        trackServiceFacade.sendMessage(msg);
+    public void sendMessage(){
+        trackServiceFacade.sendMessage();
     }
 }

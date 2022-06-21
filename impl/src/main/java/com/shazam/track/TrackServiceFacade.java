@@ -19,7 +19,10 @@ public class TrackServiceFacade {
         return trackService.deleteTrack(trackId);
     }
 
-    public void sendMessage(String msg){
-        trackService.sendMessage(msg);
+//    public void sendMessage(String msg){
+//        trackService.sendMessage(msg);
+//    }
+    public void sendMessage(){
+        trackService.sendMessage();
     }
 }

@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 public class TrackService {
     private final TrackIntegration trackIntegration;
     private final TrackRepository trackRepository;
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, TrackServiceResponse> kafkaTemplate;
 
     public Mono<TrackServiceResponse> findById(String trackId){
         return trackRepository.findById(trackId)
@@ -34,8 +34,19 @@ public class TrackService {
         return trackRepository.deleteById(trackId);
     }
 
-    public void sendMessage(String msg){
-        String topicName = "teste";
-        kafkaTemplate.send(topicName, msg);
+//    public void sendMessage(String msg){
+//        String topicName = "teste";
+//        kafkaTemplate.send(topicName, msg);
+//    }
+
+    public void sendMessage(){
+        var trackServiceResponse = new TrackServiceResponse.Builder()
+                .id("54428397")
+                .link("https://www.shazam.com/track/54428397/without-me")
+                .subtitle("Eminem")
+                .type("MUSIC")
+                .title("Without Me")
+                .build();
+        kafkaTemplate.send("teste", trackServiceResponse);
     }
 }
