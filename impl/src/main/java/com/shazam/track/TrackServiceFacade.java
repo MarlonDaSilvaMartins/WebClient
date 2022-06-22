@@ -2,6 +2,7 @@ package com.shazam.track;
 
 import com.shazam.track.model.response.TrackServiceResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
@@ -9,6 +10,7 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class TrackServiceFacade {
     private final TrackService trackService;
+    private final KafkaTemplate<String, TrackServiceResponse> kafkaTemplate;
 
     public Mono<TrackServiceResponse> findTrack(String trackId){
         return trackService.findById(trackId)
@@ -19,10 +21,11 @@ public class TrackServiceFacade {
         return trackService.deleteTrack(trackId);
     }
 
-//    public void sendMessage(String msg){
-//        trackService.sendMessage(msg);
-//    }
-    public void sendMessage(){
-        trackService.sendMessage();
+    public void sendMessageWithCallback(){
+        trackService.sendMessageWithCallback();
+    }
+
+    public void sendMessage(String trackId) {
+        trackService.sendMessage(trackId);
     }
 }

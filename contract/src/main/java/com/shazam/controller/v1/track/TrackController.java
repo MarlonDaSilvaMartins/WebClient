@@ -28,10 +28,17 @@ public class TrackController {
         return trackControllerFacade.deleteTrack(trackId);
     }
 
-    @ApiOperation(value = "test kafka")
-    @PostMapping("/kafka")
+    @ApiOperation(value = "test kafka with callback")
+    @GetMapping("/kafkaWithCallback")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void sendMessage(){
-        trackControllerFacade.sendMessage();
+    public void sendMessageWithCallback(){
+        trackControllerFacade.sendMessageWithCallback();
+    }
+
+    @ApiOperation(value = "find track and send with kafka")
+    @GetMapping("/kafka")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void sendMessage(@RequestParam("trackId") String trackId){
+        trackControllerFacade.sendMessage(trackId);
     }
 }

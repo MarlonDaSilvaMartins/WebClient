@@ -1,16 +1,23 @@
 package com.shazam.track;
 
 import com.shazam.repository.TrackRepository;
+import com.shazam.track.mapper.response.IntegrationResponseMapper;
 import com.shazam.track.mapper.response.TrackEntityMapper;
 import com.shazam.track.mapper.response.TrackIntegrationResponseMapper;
+import com.shazam.track.mapper.response.ServiceResponseMapper;
 import com.shazam.track.model.response.TrackServiceResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -35,12 +42,7 @@ public class TrackService {
         return trackRepository.deleteById(trackId);
     }
 
-//    public void sendMessage(String msg){
-//        String topicName = "teste";
-//        kafkaTemplate.send(topicName, msg);
-//    }
-
-    public void sendMessage(){
+    public void sendMessageWithCallback(){
         var trackServiceResponse = new TrackServiceResponse.Builder()
                 .id("54428397")
                 .link("https://www.shazam.com/track/54428397/without-me")
@@ -64,5 +66,10 @@ public class TrackService {
                 System.out.println("Unable to send message=[" + trackServiceResponse + "] due to : " + ex.getMessage());
             }
         });
+    }
+
+    public void sendMessage(String trackId){
+        trackIntegration.findTrack(trackId).map(IntegrationResponseMapper.MAPPER::toTrackResponseMapper)
+                .map(trackServiceResponse -> kafkaTemplate.send("teste", trackServiceResponse));
     }
 }
