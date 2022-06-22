@@ -1,14 +1,15 @@
 package com.shazam.track;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shazam.repository.TrackRepository;
 import com.shazam.track.mapper.response.TrackEntityMapper;
 import com.shazam.track.mapper.response.TrackIntegrationResponseMapper;
 import com.shazam.track.model.response.TrackServiceResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -47,6 +48,21 @@ public class TrackService {
                 .type("MUSIC")
                 .title("Without Me")
                 .build();
-        kafkaTemplate.send("teste", trackServiceResponse);
+
+        ListenableFuture<SendResult<String, TrackServiceResponse>> future = kafkaTemplate
+                .send("teste", trackServiceResponse);
+
+        future.addCallback(new ListenableFutureCallback<SendResult<String, TrackServiceResponse>>() {
+            @Override
+            public void onSuccess(SendResult<String, TrackServiceResponse> result) {
+                System.out.print("Sent message=["+trackServiceResponse+"] with offset=["
+                        + result.getRecordMetadata().offset() + "]");
+            }
+
+            @Override
+            public void onFailure(Throwable ex) {
+                System.out.println("Unable to send message=[" + trackServiceResponse + "] due to : " + ex.getMessage());
+            }
+        });
     }
 }
