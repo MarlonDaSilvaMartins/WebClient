@@ -55,7 +55,7 @@ public class TrackService {
         future.addCallback(new ListenableFutureCallback<SendResult<String, TrackServiceResponse>>() {
             @Override
             public void onSuccess(SendResult<String, TrackServiceResponse> result) {
-                System.out.print("Sent message=["+trackServiceResponse+"] with offset=["
+                System.out.println("Sent message=["+trackServiceResponse+"] with offset=["
                         + result.getRecordMetadata().offset() + "]");
             }
 
