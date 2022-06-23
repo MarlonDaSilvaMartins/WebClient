@@ -21,11 +21,11 @@ public class TrackServiceFacade {
         return trackService.deleteTrack(trackId);
     }
 
-    public void sendMessageWithCallback(){
-        trackService.sendMessageWithCallback();
+    public Mono<Void> sendMessageWithCallback(){
+        return trackService.sendMessageWithCallback();
     }
 
-    public void sendMessage(String trackId) {
-        trackService.sendMessage(trackId);
+    public Mono<Void> sendMessage(String trackId) {
+        return trackService.sendMessage(trackId);
     }
 }

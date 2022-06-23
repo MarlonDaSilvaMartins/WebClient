@@ -31,14 +31,14 @@ public class TrackController {
     @ApiOperation(value = "test kafka with callback")
     @GetMapping("/kafkaWithCallback")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void sendMessageWithCallback(){
-        trackControllerFacade.sendMessageWithCallback();
+    public Mono<Void> sendMessageWithCallback(){
+        return trackControllerFacade.sendMessageWithCallback();
     }
 
     @ApiOperation(value = "find track and send with kafka")
     @GetMapping("/kafka")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void sendMessage(@RequestParam("trackId") String trackId){
-        trackControllerFacade.sendMessage(trackId);
+    public Mono<Void> sendMessage(@RequestParam("trackId") String trackId){
+        return trackControllerFacade.sendMessage(trackId);
     }
 }

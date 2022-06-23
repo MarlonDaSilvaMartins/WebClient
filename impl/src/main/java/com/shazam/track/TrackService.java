@@ -7,6 +7,7 @@ import com.shazam.track.mapper.response.TrackIntegrationResponseMapper;
 import com.shazam.track.mapper.response.ServiceResponseMapper;
 import com.shazam.track.model.response.TrackServiceResponse;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -16,9 +17,11 @@ import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class TrackService {
@@ -42,7 +45,7 @@ public class TrackService {
         return trackRepository.deleteById(trackId);
     }
 
-    public void sendMessageWithCallback(){
+    public Mono<Void> sendMessageWithCallback(){
         var trackServiceResponse = new TrackServiceResponse.Builder()
                 .id("54428397")
                 .link("https://www.shazam.com/track/54428397/without-me")
@@ -57,19 +60,23 @@ public class TrackService {
         future.addCallback(new ListenableFutureCallback<SendResult<String, TrackServiceResponse>>() {
             @Override
             public void onSuccess(SendResult<String, TrackServiceResponse> result) {
-                System.out.println("Sent message=["+trackServiceResponse+"] with offset=["
+                log.info("Sent message=["+trackServiceResponse+"] with offset=["
                         + result.getRecordMetadata().offset() + "]");
             }
 
             @Override
             public void onFailure(Throwable ex) {
-                System.out.println("Unable to send message=[" + trackServiceResponse + "] due to : " + ex.getMessage());
+                log.info("Unable to send message=[" + trackServiceResponse + "] due to : " + ex.getMessage());
             }
         });
+        return Mono.empty();
     }
 
-    public void sendMessage(String trackId){
-        trackIntegration.findTrack(trackId).map(IntegrationResponseMapper.MAPPER::toTrackResponseMapper)
-                .map(trackServiceResponse -> kafkaTemplate.send("teste", trackServiceResponse));
+    public Mono<Void> sendMessage(String trackId){
+        log.info("ENVIANDO");
+        return trackIntegration.findTrack(trackId)
+                .map(IntegrationResponseMapper.MAPPER::toTrackResponseMapper)
+                .map(trackServiceResponse -> kafkaTemplate.send("teste",trackServiceResponse))
+                .then();
     }
 }
