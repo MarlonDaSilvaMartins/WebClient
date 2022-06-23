@@ -19,12 +19,6 @@ import java.util.List;
 public class KafkaConsumer {
     private final TrackRepository trackRepository;
 
-//    @KafkaListener(topics = "teste", groupId = "myGroup")
-//    public Mono<Void> listener(@Payload List<TrackServiceResponse> data){
-//        log.info(data.toString());
-//        return Mono.empty();
-//    }
-
     @KafkaListener(topics = "teste", groupId = "myGroup")
     public Mono<Void> listener(@Payload List<TrackServiceResponse> data){
         log.info("RECEBENDO DA INTEGRAÇÃO: "+ data);
