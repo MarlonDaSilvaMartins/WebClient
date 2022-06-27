@@ -4,22 +4,15 @@ import com.shazam.repository.TrackRepository;
 import com.shazam.track.mapper.response.IntegrationResponseMapper;
 import com.shazam.track.mapper.response.TrackEntityMapper;
 import com.shazam.track.mapper.response.TrackIntegrationResponseMapper;
-import com.shazam.track.mapper.response.ServiceResponseMapper;
 import com.shazam.track.model.response.TrackServiceResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.util.function.Tuple2;
-
-import java.util.List;
 
 @Slf4j
 @Service

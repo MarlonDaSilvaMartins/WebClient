@@ -18,6 +18,5 @@ spring:
       group-id: myGroup
 logging:
   level:
-    root: ERROR
     org.springframework.web: INFO
     com.shazam: INFO
