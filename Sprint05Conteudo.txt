@@ -56,3 +56,9 @@ https://medium.com/collabcode/strategy-padr%C3%B5es-de-projeto-em-java-43889a3af
 https://howtodoinjava.com/design-patterns/behavioral/observer-design-pattern/
 https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
 https://refactoring.guru/pt-br/design-patterns/observer/java/example
+
+map         = retorna objeto (Carteira)
+flatmap     = retorna mono (Mono<Carteira>)
+flatmapmany = retorna flux (Flux<Carteira>)
+
+
